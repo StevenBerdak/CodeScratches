@@ -2,6 +2,7 @@
 Random code that I could not let go of so it goes here! :)
 
 <b>arrayOfNowTimeDifference(long subtrahend)</b>
+
 Calculates the difference between a time value and the current time retrieved with `System.currentTimeMillis()`
 ```    /**
      * Returns an array that contains the difference between the current time and the provided time.

@@ -30,6 +30,8 @@ Calculates the difference between a time value and the current time retrieved wi
 
 Determines if a given longitude point is within longitude bounds
     
+    
+   !!!! edit: needs fixed, not circular!!!!
 ```
     let min = -180.00;
     let max = 180.00;

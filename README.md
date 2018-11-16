@@ -37,7 +37,7 @@ Determines if a given longitude point is within longitude bounds
     let e = eastLngBound;
     let w = westLngBound;
 
-    let x = longitudePoint;
+    let x = lngPoint;
 
     let range = e - w;
 

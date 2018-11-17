@@ -28,24 +28,35 @@ Calculates the difference between a time value and the current time retrieved wi
 
 ## <b>boolean isPointWithinLngRange(double eastLngBound, double westLngBound, double lngPoint)</b>
 
-Determines if a given longitude point is within longitude bounds
-    
-    
-   !!!! edit: needs fixed, not circular!!!!
-```
-    let min = -180.00;
-    let max = 180.00;
+Determines if a given longitude point is within longitude bounds in an object which contains lat and lng bounds
+``` 
+    public static List<DotEvent> dotEventsByRegion(List<DotEvent> baseEventsList,
+                                                   double northLatBound,
+                                                   double eastLngBound,
+                                                   double southLatBound,
+                                                   double westLngBound) {
+        northLatBound = clampDouble(GOOGLE_MAPS_MAX_LAT_S, GOOGLE_MAPS_MAX_LAT_N, northLatBound);
+        southLatBound = clampDouble(GOOGLE_MAPS_MAX_LAT_S, GOOGLE_MAPS_MAX_LAT_N, southLatBound);
 
-    let e = eastLngBound;
-    let w = westLngBound;
+        List<DotEvent> result = new ArrayList<>();
 
-    let x = lngPoint;
+        for (DotEvent event : baseEventsList) {
+            double pointLat = event.latitude;
+            double pointLng = event.longitude;
 
-    let range = e - w;
+            if (westLngBound > eastLngBound) {
+                //Range is located across the antipodal meridian, check if in range
+                if (pointLng >= westLngBound || pointLng <= eastLngBound &&
+                        pointLat <= northLatBound && pointLat >= southLatBound) {
+                    result.add(event);
+                }
+            } else if (pointLng <= eastLngBound && pointLng >= westLngBound &&
+                    pointLat <= northLatBound && pointLat >= southLatBound) {
+                //Range is not located across the antipodal meridian, check if in range
+                result.add(event);
+            }
+        }
 
-    x = x + 180 + range;
-    e = e + 180 + range;
-    w = w + 180 + range;
-
-    if (x <= e && x >= w) return true;
+        return result;
+    }
 ```

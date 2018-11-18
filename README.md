@@ -26,8 +26,8 @@ Calculates the difference between a time value and the current time retrieved wi
     }
 ```
 
-## <b>boolean isPointWithinLngRange(double eastLngBound, double westLngBound, double lngPoint)</b>
-!! needs update !!
+## <b>boolean dotEventsByRegion(List<DotEvent> baseEventsList, double eastLngBound, double westLngBound, double lngPoint)</b>
+
 Determines if a given longitude point is within longitude bounds in an object which contains lat and lng bounds
 ``` 
     static List<DotEvent> dotEventsByRegion(List<DotEvent> baseEventsList,

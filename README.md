@@ -30,13 +30,15 @@ Calculates the difference between a time value and the current time retrieved wi
 !! needs update !!
 Determines if a given longitude point is within longitude bounds in an object which contains lat and lng bounds
 ``` 
-    public static List<DotEvent> dotEventsByRegion(List<DotEvent> baseEventsList,
-                                                   double northLatBound,
-                                                   double eastLngBound,
-                                                   double southLatBound,
-                                                   double westLngBound) {
+    static List<DotEvent> dotEventsByRegion(List<DotEvent> baseEventsList,
+                                            double northLatBound,
+                                            double eastLngBound,
+                                            double southLatBound,
+                                            double westLngBound) {
         northLatBound = clampDouble(GOOGLE_MAPS_MAX_LAT_S, GOOGLE_MAPS_MAX_LAT_N, northLatBound);
         southLatBound = clampDouble(GOOGLE_MAPS_MAX_LAT_S, GOOGLE_MAPS_MAX_LAT_N, southLatBound);
+
+        boolean acrossAntipodal = westLngBound > eastLngBound;
 
         List<DotEvent> result = new ArrayList<>();
 
@@ -44,16 +46,18 @@ Determines if a given longitude point is within longitude bounds in an object wh
             double pointLat = event.latitude;
             double pointLng = event.longitude;
 
-            if (westLngBound > eastLngBound) {
+            if (!acrossAntipodal) {
+                if (pointLng <= eastLngBound && pointLng >= westLngBound &&
+                        pointLat <= northLatBound && pointLat >= southLatBound) {
+                    //Range is not located across the antipodal meridian, check if in range
+                    result.add(event);
+                }
+            } else {
                 //Range is located across the antipodal meridian, check if in range
                 if (pointLng >= westLngBound || pointLng <= eastLngBound &&
                         pointLat <= northLatBound && pointLat >= southLatBound) {
                     result.add(event);
                 }
-            } else if (pointLng <= eastLngBound && pointLng >= westLngBound &&
-                    pointLat <= northLatBound && pointLat >= southLatBound) {
-                //Range is not located across the antipodal meridian, check if in range
-                result.add(event);
             }
         }
 

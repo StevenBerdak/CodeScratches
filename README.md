@@ -37,6 +37,8 @@ Determines if a given longitude point is within longitude bounds in a view which
                                             double westLngBound) {
         northLatBound = clampDouble(GOOGLE_MAPS_MAX_LAT_S, GOOGLE_MAPS_MAX_LAT_N, northLatBound);
         southLatBound = clampDouble(GOOGLE_MAPS_MAX_LAT_S, GOOGLE_MAPS_MAX_LAT_N, southLatBound);
+        eastLatBound = clampDouble(GOOGLE_MAPS_MAX_LNG_W, GOOGLE_MAPS_MAX_LNG_E, eastLatBound);
+        westLatBound = clampDouble(GOOGLE_MAPS_MAX_LNG_W, GOOGLE_MAPS_MAX_LNG_E, westLatBound);
 
         boolean acrossAntipodal = westLngBound > eastLngBound;
 

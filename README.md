@@ -96,3 +96,38 @@ Simply adds an inner box shadow to a css container
          box-shadow: inset 0 4px 4px rgba(0, 0, 0, 0.25);
      }
 ```
+
+## <b>static File recursiveSearchForFile(String dir, String targetFileName, String targetFileExtension)</b>
+
+Recursively walks a file tree and searches for a given file
+
+```
+    static File recursiveSearchForFile(String dir, String targetFileName, String targetFileExtension) {
+        
+        File currentFile = new File(dir);
+
+        if (currentFile.getName().startsWith(targetFileName) &&
+                currentFile.getName().endsWith(targetFileExtension)) {
+
+            return currentFile;
+        } else {
+
+            File[] fileList = currentFile.listFiles();
+
+            if (fileList != null)
+
+                for (File file : fileList) {
+
+                    File innerFile =
+                            recursiveSearchForFile(file.getName(), targetFileName,
+                                    targetFileExtension);
+
+                    if (innerFile != null) {
+                        return innerFile;
+                    }
+                }
+        }
+
+        return null;
+    }
+```

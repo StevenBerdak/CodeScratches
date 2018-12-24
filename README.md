@@ -89,4 +89,9 @@ Simply adds an inner box shadow to a css container
      {
          box-shadow: inset 0 -7px 9px -7px rgba(0,0,0,0.4);
      }
+     
+     .top-box-minimal
+     {
+         box-shadow: inset 0 4px 4px rgba(0,0,0, 0.25);
+     }
 ```

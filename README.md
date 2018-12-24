@@ -72,26 +72,27 @@ Determines if a given longitude point is within longitude bounds in a view which
 Simply adds an inner box shadow to a css container
 
 /* offset-x | offset-y | blur-radius | spread-radius | color */
+
 ```
      .top-box
      {
-         box-shadow: inset 0 7px 9px -7px rgba(0,0,0,0.4);
+         box-shadow: inset 0 7px 9px -7px rgba(0, 0, 0, 0.4);
      }
      .left-box
      {
-         box-shadow: inset 7px 0 9px -7px rgba(0,0,0,0.4);
+         box-shadow: inset 7px 0 9px -7px rgba(0, 0, 0, 0.4);
      }
      .right-box
      {
-         box-shadow: inset -7px 0 9px -7px rgba(0,0,0,0.4);
+         box-shadow: inset -7px 0 9px -7px rgba(0, 0, 0, 0.4);
      }
      .bottom-box
      {
-         box-shadow: inset 0 -7px 9px -7px rgba(0,0,0,0.4);
+         box-shadow: inset 0 -7px 9px -7px rgba(0, 0, 0, 0.4);
      }
      
      .top-box-minimal
      {
-         box-shadow: inset 0 4px 4px rgba(0,0,0, 0.25);
+         box-shadow: inset 0 4px 4px rgba(0, 0, 0, 0.25);
      }
 ```

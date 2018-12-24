@@ -70,6 +70,8 @@ Determines if a given longitude point is within longitude bounds in a view which
 ## <b>Css inner box shadows</b>
 
 Simply adds an inner box shadow to a css container
+
+/* offset-x | offset-y | blur-radius | spread-radius | color */
 ```
      .top-box
      {

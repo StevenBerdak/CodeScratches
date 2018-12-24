@@ -66,3 +66,25 @@ Determines if a given longitude point is within longitude bounds in a view which
         return result;
     }
 ```
+
+## <b>Css inner box shadows</b>
+
+Simply adds an inner box shadow to a css container
+```
+     .top-box
+     {
+         box-shadow: inset 0 7px 9px -7px rgba(0,0,0,0.4);
+     }
+     .left-box
+     {
+         box-shadow: inset 7px 0 9px -7px rgba(0,0,0,0.4);
+     }
+     .right-box
+     {
+         box-shadow: inset -7px 0 9px -7px rgba(0,0,0,0.4);
+     }
+     .bottom-box
+     {
+         box-shadow: inset 0 -7px 9px -7px rgba(0,0,0,0.4);
+     }
+```
